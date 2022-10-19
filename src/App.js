@@ -6,6 +6,7 @@ function App() {
   return (
     <>
     <h1>Friend List App</h1>
+    <h2>Add new Friend</h2>
       <AddFriend />
       <FriendCard />
     </>

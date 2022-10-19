@@ -13,7 +13,7 @@ class AddFriend extends Component {
 
           <input type="text" name="city" placeholder="City" />
         </form>
-        <button className="btn">Submit</button>
+        <button className="btn">Add Friend</button>
       </div>
     );
   }

@@ -19,16 +19,17 @@ body {
 }
 
 .container {
-  width: 80%;
-  height: 100px;
-  background-color: bisque;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5px;
-  border: 2px solid black;
-  margin: 20px
+  background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: relative;
+	width: 350px;
+	max-width: 100%;
+	text-align: center;
+  margin: 20px;
+  padding: 10px;
 }
 
 .formContainer {
@@ -47,4 +48,49 @@ input {
   width: 100px;
   height: 50px;
   margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(113, 113, 238);
 }
+
+.btn:hover {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+
+.btn2 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 30px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.btn2:hover,
+.btn2:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.btn2:active {
+  opacity: .5;
+}
+

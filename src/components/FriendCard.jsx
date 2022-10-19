@@ -17,6 +17,7 @@ class FriendCard extends Component {
         <div className="restInfo">
         Age: {friend.age}, From: {friend.city}.
         </div>
+        <button className="btn2">Delete</button>
       </div>
     )
     )

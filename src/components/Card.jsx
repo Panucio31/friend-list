@@ -1,20 +1,25 @@
-import React, { Component } from "react";
 
-class FriendCard extends Component {
+const Card = (props) => {
 
-  render() {
-    return (
-      <div className="container">
-        <div className="fNameLName">
-          {this.props.firstName} {this.props.lastName}
-        </div>
-        <div className="restInfo">
-        Age: {this.props.age}, From: {this.props.city}.
-        </div>
-        <button className="btn2">Delete</button>
-      </div>
-    )
+  const handleDelete = () => {
+    
   }
+
+  return (
+    <div className="container" key={props.id}>
+      <div className="fNameLName">
+        {props.firstName} {props.lastName}
+      </div>
+      <div className="restInfo">
+        Age: {props.age}, From: {props.city}.
+      </div>
+      <button className="btn2" onClick={handleDelete}>
+        Delete
+      </button>
+    </div>
+  );
 }
 
-export default FriendCard;
+
+
+export default Card;

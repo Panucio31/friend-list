@@ -1,9 +1,6 @@
 
-const Card = (props) => {
 
-  const handleDelete = () => {
-    
-  }
+const Card = (props) => {
 
   return (
     <div className="container" key={props.id}>
@@ -13,7 +10,7 @@ const Card = (props) => {
       <div className="restInfo">
         Age: {props.age}, From: {props.city}.
       </div>
-      <button className="btn2" onClick={handleDelete}>
+      <button className="btn2" onClick={props.erase}>
         Delete
       </button>
     </div>

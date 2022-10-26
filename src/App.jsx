@@ -1,39 +1,32 @@
 import "./App.css";
 import { useState } from "react";
 
+const initialForm = { firstName: "", lastName: "", age: "", city: "" };
+
 const App = () => {
-  const [friends, setFriends] = useState([
-    { id: 1, 
-      firstName: "John", 
-      lastName: "Smith", 
-      age: 32, 
-      city: "Kaunas" 
-    },
-    {
-      id: 2,
-      firstName: "Maria",
-      lastName: "Hudghes",
-      age: 28,
-      city: "Siauliai",
-    },
-    {
-      id: 3,
-      firstName: "Thomas",
-      lastName: "Muiller",
-      age: 33,
-      city: "Vilnius",
-    },
-  ]);
+  const [friends, setFriends] = useState([]);
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [age, setAge] = useState('');
-  const [city, setCity] = useState('');
+  const [formState, setFormState] = useState(initialForm);
 
-  const addNewFriend = (e) => {
+  const onChange = (e) => {
+    const fieldId = e.target.id;
+    const fieldValue = e.target.value;
+
+    setFormState({ ...formState, [fieldId]: fieldValue });
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    setFriends([...friends, {id: Date.now(), firstName, lastName, age, city}])
-    
+
+    const newFriend = {
+      id: Date.now(),
+      firstName: formState.firstName,
+      lastName: formState.lastName,
+      age: formState.age,
+      city: formState.city,
+    };
+    setFriends([...friends, newFriend]);
+    setFormState(initialForm)
   };
 
   const handleDelete = (id) => {
@@ -44,58 +37,63 @@ const App = () => {
     <div>
       <h1>Friend List App</h1>
       <h2>Add new Friend</h2>
-      <div className="formContainer">
-        <form action="send" id="form">
-          <input 
-          type="text" 
-          name="name" 
-          placeholder="Name" 
-          id="name" 
-          value={firstName}
-          onChange={(e)=> setFirstName(e.target.value)}/>
-
-          <input 
-          type="text" 
-          name="surname" 
-          placeholder="Surname" 
-          value={lastName}
-          onChange={(e)=> setLastName(e.target.value)}
+      <div className="formContainer" >
+        <form>
+          <input
+            type="text"
+            placeholder="Name"
+            id="name"
+            value={formState.firstName}
+            onChange={onChange}
+            required
           />
 
-          <input 
-          type="number" 
-          name="age" 
-          placeholder="Age"
-          value={age}
-          onChange={(e)=> setAge(e.target.value)}
-           />
+          <input
+            type="text"
+            id="surname"
+            placeholder="Surname"
+            value={formState.lastName}
+            onChange={onChange}
+          />
 
-          <input 
-          type="text" 
-          name="city" 
-          placeholder="City" 
-          value={city}
-          onChange={(e)=> setCity(e.target.value)}
+          <input
+            type="number"
+            id="age"
+            placeholder="Age"
+            value={formState.age}
+            onChange={onChange}
+          />
+
+          <input
+            type="text"
+            id="city"
+            placeholder="City"
+            value={formState.city}
+            onChange={onChange}
           />
         </form>
-        <button className="btn" form="form" onClick={addNewFriend}>
+        <button type="submit" className="btn" onClick={onSubmit}>
           Add Friend
         </button>
       </div>
 
-      {friends.map((friend) => (
-        <div className="container" key={friend.id}>
-          <div className="fNameLName">
-            {friend.firstName} {friend.lastName}
+      {friends.length > 0 ? (
+        friends.map((friend) => (
+          <div className="container" key={friend.id}>
+            <div className="fNameLName">
+              {friend.firstName} {friend.lastName}
+            </div>
+            <div className="restInfo">
+              Age: {friend.age}, From: {friend.city}.
+            </div>
+            <button className="btn2" onClick={() => handleDelete(friend.id)}>
+              Delete
+            </button>
           </div>
-          <div className="restInfo">
-            Age: {friend.age}, From: {friend.city}.
-          </div>
-          <button className="btn2" onClick={() => handleDelete(friend.id)}>
-            Delete
-          </button>
-        </div>
-      ))}
+        ))
+      ) : (
+        <h1>You have no friends!!</h1>
+      )}
     </div>
   );
 };

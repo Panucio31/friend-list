@@ -33,6 +33,10 @@ const App = () => {
     setFriends(friends.filter((friend) => friend.id !== id));
   };
 
+  const handleEdit = (id) => {
+      console.log('veikia', id)
+  }
+
   return (
     <div>
       <h1>Friend List App</h1>
@@ -42,7 +46,7 @@ const App = () => {
           <input
             type="text"
             placeholder="Name"
-            id="name"
+            id="firstName"
             value={formState.firstName}
             onChange={onChange}
             required
@@ -50,7 +54,7 @@ const App = () => {
 
           <input
             type="text"
-            id="surname"
+            id="lastName"
             placeholder="Surname"
             value={formState.lastName}
             onChange={onChange}
@@ -89,6 +93,7 @@ const App = () => {
             <button className="btn2" onClick={() => handleDelete(friend.id)}>
               Delete
             </button>
+            <button className="btn2" onClick={() => handleEdit(friend.id)}>Edit</button>
           </div>
         ))
       ) : (
